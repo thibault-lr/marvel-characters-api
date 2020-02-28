@@ -8,7 +8,7 @@ class Server {
     this.server = new Hapi.Server(options);
   }
   
-  async startServer() {
+  async startServer(): Promise<void> {
     try {
       await this.server.start();
       console.log(`Server running at ${this.server.info.protocol}://${this.server.info.host}:${this.server.info.port}`)
