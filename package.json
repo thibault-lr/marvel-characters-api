@@ -1,0 +1,23 @@
+{
+  "name": "marvel-characters-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "TLR",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": "12.7.0"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "devServer": "tsnd --respawn",
+    "build": "yarn run clean && ./node_modules/.bin/tsc"
+  },
+  "dependencies": {
+    "rimraf": "^3.0.2",
+    "typescript": "^3.8.2"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.44"
+  }
+}
