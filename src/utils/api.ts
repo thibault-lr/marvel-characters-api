@@ -1,11 +1,11 @@
-import * as Axios from "axios";
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
-class APIConnector {
+export class APIConnector {
 
-  public connector: Axios.AxiosInstance;
+  public connector: AxiosInstance;
 
   constructor(baseUrl: string, params: object) {
-    this.connector = Axios.default.create({
+    this.connector = axios.create({
       baseURL: baseUrl,
       params: params,
       method: 'get',
@@ -13,10 +13,9 @@ class APIConnector {
     })
   }
 
-  async get (url: string): Promise<Axios.AxiosResponse | undefined> {
+  async get (url: string): Promise<AxiosResponse | undefined> {
     try {
-      const result: Axios.AxiosResponse = await this.connector.get(url);
-
+      const result: AxiosResponse = await this.connector.get(url);
       return result.data;
     } catch (error) {
 
@@ -31,4 +30,4 @@ class APIConnector {
   }
 }
 
-export default APIConnector
+// export APIConnector

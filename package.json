@@ -12,6 +12,7 @@
     "clean": "rimraf dist",
     "devServer": "tsnd --respawn ./src/index.ts",
     "build": "yarn run clean && ./node_modules/.bin/tsc",
+    "start": "node dist/index.js",
     "test": "jest --coverage"
   },
   "dependencies": {

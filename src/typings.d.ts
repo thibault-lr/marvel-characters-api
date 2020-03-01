@@ -6,7 +6,7 @@ declare global {
       API_PUBLIC_KEY: string;
       API_PRIVATE_KEY: string;
       NODE_HOST: string;
-      NODE_PORT: number;
+      NODE_PORT: string;
     }
   }
 }

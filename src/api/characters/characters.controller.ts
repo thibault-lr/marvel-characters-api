@@ -1,6 +1,6 @@
 import * as Hapi from "@hapi/hapi";
 import * as Boom from "@hapi/boom"
-import APIConnector from "./../../utils/api";
+import { APIConnector }  from "./../../utils/api";
 import * as HashUtils from "./../../utils/hash";
 import APIConfig from "./../../config/api";
 import CharacterModel from './characters.interface'
@@ -20,9 +20,8 @@ class Characters {
     // see https://developer.marvel.com/documentation/generalinfo 
     const res = await API.get(`/v1/public/characters?ts=${ts}&apikey=${process.env.API_PUBLIC_KEY}&hash=${hash}&offset=${request.query.offset}`);
 
-
     // return a 404 if api call crash
-    if(! res ) return Boom.notFound()
+    if(! res ) { console.log("herdddde"); return Boom.notFound() }
 
     const responseMessage = {
       total: res.data.total,
