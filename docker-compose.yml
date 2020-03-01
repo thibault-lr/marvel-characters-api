@@ -1,0 +1,12 @@
+version: "3.5"
+services:
+  api:
+    build: .
+    ports:
+      - "${NODE_PORT}:${NODE_PORT}"
+    environment:
+      NODE_HOST: ${NODE_HOST}
+      NODE_PORT: ${NODE_PORT}
+      API_PUBLIC_KEY: ${API_PUBLIC_KEY}
+      API_PRIVATE_KEY: ${API_PRIVATE_KEY}
+        
