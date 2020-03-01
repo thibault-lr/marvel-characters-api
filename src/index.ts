@@ -1,5 +1,9 @@
+
 import Server from './server';
+import dotenv from "dotenv"
 
-const server = new Server({host: "localhost", port: "3000"});
+dotenv.config()
 
+const server = new Server({host: process.env.NODE_HOST, port: process.env.NODE_PORT});
+server.initControllers()
 server.startServer()
