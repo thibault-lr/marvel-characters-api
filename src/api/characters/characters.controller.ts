@@ -16,8 +16,12 @@ class Characters {
       "apikey": process.env.API_PUBLIC_KEY,
     });
   
-    const res = await API.get(`/v1/public/characters?ts=${ts}&apikey=${process.env.API_PUBLIC_KEY}&hash=${hash}`);
+    // timestamp is required to perform api calls 
+    // see https://developer.marvel.com/documentation/generalinfo 
+    const res = await API.get(`/v1/public/characters?ts=${ts}&apikey=${process.env.API_PUBLIC_KEY}&hash=${hash}&offset=${request.query.offset}`);
 
+
+    // return a 404 if api call crash
     if(! res ) return Boom.notFound()
 
     const responseMessage = {
@@ -29,8 +33,6 @@ class Characters {
     };
 
     if(res.data.results.length > 0){
-
-
       res.data.results.forEach( (char: any) => {
         responseMessage.characters.push({
           "id": char.id,

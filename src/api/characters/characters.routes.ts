@@ -12,7 +12,12 @@ export function charactersRoutes(server: Hapi.Server, routePrefix = "/v1"): void
     method: "GET",
     path: `${routePrefix}/characters`,
     options: {
-      handler: charController.getCharacters
+      handler: charController.getCharacters,
+      validate: {
+        query: {
+          offset: Joi.number()
+        }
+      }
     }
   })
 }

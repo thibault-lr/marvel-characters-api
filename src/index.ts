@@ -1,4 +1,3 @@
-import * as Hapi from "@hapi/hapi";
 
 import Server from './server';
 import dotenv from "dotenv"
