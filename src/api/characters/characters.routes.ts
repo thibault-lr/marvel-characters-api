@@ -30,7 +30,7 @@ export function charactersRoutes(server: Hapi.Server, routePrefix = "/v1"): void
             characters: Joi.array().items(Joi.object().keys({
               id: Joi.number(),
               name: Joi.string(),
-              image: Joi.string()
+              image: Joi.any()
             }))
           }).label('Result'),
           404: Joi.any()
