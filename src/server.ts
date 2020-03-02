@@ -2,6 +2,11 @@ import * as Hapi from "@hapi/hapi";
 import * as Joi from "@hapi/joi"
 import * as Characters from "./api/characters";
 
+// plugins 
+import VisionPlugin from "./plugins/vision";
+import InertPlugin from "./plugins/inert";
+import SwaggerPlugin from "./plugins/hapi-swagger";
+
 class Server {
   
   private server: Hapi.Server;
@@ -22,6 +27,13 @@ class Server {
     } catch (e){
       console.error("Server failed to start", e.stack)
     }
+  }
+
+  async registerPlugins(): Promise<void> {
+    
+    await InertPlugin(this.server);
+    await VisionPlugin(this.server);
+    await SwaggerPlugin(this.server);
   }
 
   initControllers(): void{
