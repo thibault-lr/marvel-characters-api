@@ -18,7 +18,14 @@ process.on("unhandledRejection", (reason, promise) => {
 ( async () => {
 
   const server = new Server({
-    host: process.env.NODE_HOST, port: process.env.NODE_PORT});
+    host: process.env.NODE_HOST, 
+    port: process.env.NODE_PORT, 
+    routes: { 
+      cors: {
+        origin: ["*"]
+      }
+    }
+  });
   server.initControllers()
   try {
     await server.registerPlugins();
