@@ -36,7 +36,7 @@ class Characters {
         responseMessage.characters.push({
           "id": char.id,
           "name": char.name,
-          "image": char.thumbnail.path.includes("image_not_available") ? false : char.thumbnail.path +'.'+ char.thumbnail.extension
+          "image": char.thumbnail.path.includes("image_not_available") ? false : `${char.thumbnail.path}.${char.thumbnail.extension}`
         })        
       })
     }
