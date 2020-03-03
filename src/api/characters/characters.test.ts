@@ -25,7 +25,7 @@ describe("Characters testing", () => {
 
     const options = {
       method: 'GET',
-      url: '/v1/characters'
+      url: '/v1/characters?offset=0&limit=10'
     }
 
     const response = await server.getServer().inject(options);

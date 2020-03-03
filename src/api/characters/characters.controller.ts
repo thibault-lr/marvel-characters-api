@@ -18,7 +18,7 @@ class Characters {
   
     // timestamp is required to perform api calls 
     // see https://developer.marvel.com/documentation/generalinfo 
-    const res = await API.get(`/v1/public/characters?ts=${ts}&apikey=${process.env.API_PUBLIC_KEY}&hash=${hash}&offset=${request.query.offset}`);
+    const res = await API.get(`/v1/public/characters?ts=${ts}&apikey=${process.env.API_PUBLIC_KEY}&hash=${hash}&offset=${request.query.offset}&limit=${request.query.limit}`);
 
     // return a 404 if api call crash
     if(! res ) { console.log("herdddde"); return Boom.notFound() }
@@ -27,7 +27,7 @@ class Characters {
       total: res.data.total,
       count: res.data.count,
       offset: res.data.offset,
-      limit: 20,
+      limit: request.query.limit,
       characters: [] as CharacterModel[]
     };
 
@@ -36,7 +36,7 @@ class Characters {
         responseMessage.characters.push({
           "id": char.id,
           "name": char.name,
-          "image": char.thumbnail.path.includes("image_not_available") ? false : char.thumbnail.path +'.'+ char.thumbnail.extension
+          "image": char.thumbnail.path.includes("image_not_available") ? false : `${char.thumbnail.path}.${char.thumbnail.extension}`
         })        
       })
     }
