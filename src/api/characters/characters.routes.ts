@@ -17,7 +17,8 @@ export function charactersRoutes(server: Hapi.Server, routePrefix = "/v1"): void
       notes: 'Returns a list of characters',
       validate: {
         query: {
-          offset: Joi.number()
+          offset: Joi.number().required(),
+          limit: Joi.number().required()
         }
       },
       response: {
