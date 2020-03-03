@@ -11,7 +11,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "devServer": "tsnd --respawn ./src/index.ts",
-    "build": "yarn run clean && ./node_modules/.bin/tsc",
+    "build": "./node_modules/.bin/tsc",
     "start": "node dist/index.js",
     "test": "jest --coverage"
   },
@@ -30,6 +30,7 @@
     "@types/hapi__inert": "^5.2.0",
     "@types/hapi__vision": "^5.5.1",
     "@types/jest": "^25.1.3",
+    "@types/node": "^13.7.7",
     "@typescript-eslint/eslint-plugin": "^2.21.0",
     "@typescript-eslint/parser": "^2.21.0",
     "dotenv": "^8.2.0",
